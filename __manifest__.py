@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 {
     'name': "Account Amount Other Charges Compute",
 
@@ -13,7 +13,7 @@
     'website': "https://mrgomezsv.github.io/",
 
     'category': 'Accounting/Accounting',
-    'version': '19.0.1.0.0',
+    'version': '20.0.1.0.0',
     'license': 'LGPL-3',
 
     'depends': ['base', 'account'],
