@@ -6,7 +6,7 @@
             <field name="model">account.move</field>
             <field name="inherit_id" ref="account.view_invoice_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='amount_total_signed']" position="after">
+                <xpath expr="//field[contains(@name, 'amount_total')][last()]" position="after">
                     <field name="mr_amount_total" widget="monetary" sum="Total Importe Adeudado" optional="hide"/>
                     <field name="mr_other_charges" widget="monetary" sum="Total Otros Cargos" optional="hide"/>
                     <field name="mr_total_with_other_charges" widget="monetary" sum="Total Mas Otros Cargos" optional="hide"/>

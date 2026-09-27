@@ -25,11 +25,13 @@ class AccountMove(models.Model):
         help='Muestra el valor del Total Mas Otros Cargos'
     )
 
-    @api.depends('amount_total', 'dte_other_charges_tr_ids', 'dte_other_charges_tr_ids.amount')
+    @api.depends('amount_total')
     def _compute_mr_cume(self):
         for move in self:
-            other_charges = sum(move.dte_other_charges_tr_ids.mapped('amount'))
-            mr_total = other_charges + move.amount_total
+            other_charges = 0.0
+            if hasattr(move, 'dte_other_charges_tr_ids'):
+                other_charges = sum(move.dte_other_charges_tr_ids.mapped('amount'))
+            mr_total = other_charges + (move.amount_total or 0.0)
             move.mr_total_with_other_charges = mr_total
             move.mr_other_charges = other_charges
-            move.mr_amount_total = move.amount_total
+            move.mr_amount_total = move.amount_total or 0.0
