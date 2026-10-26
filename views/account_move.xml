@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- Junto al "Importe adeudado" de Odoo (amount_residual_signed), campo estable de la lista en Odoo 20 -->
         <record id="view_invoice_tree_inherit_mrg" model="ir.ui.view">
             <field name="name">account.move.tree.inherit.mrg</field>
             <field name="model">account.move</field>
             <field name="inherit_id" ref="account.view_invoice_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[contains(@name, 'amount_total')][last()]" position="after">
+                <xpath expr="//field[@name='amount_residual_signed']" position="after">
                     <field name="mr_amount_total" widget="monetary" sum="Total Importe Adeudado" optional="hide"/>
                     <field name="mr_other_charges" widget="monetary" sum="Total Otros Cargos" optional="hide"/>
                     <field name="mr_total_with_other_charges" widget="monetary" sum="Total Mas Otros Cargos" optional="hide"/>
